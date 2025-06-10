@@ -2,95 +2,15 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
+  <link rel="stylesheet" type="text/css" href="style.css">
   <title>Perfil do Aluno</title>
-  <style>
-    body {
-      font-family: Georgia, 'Times New Roman', Times, serif;
-      background-color: #000000;
-      text-align: center;
-    }
-
-    h1 {
-      color: #ee95c3;
-      font-family: Arial, Helvetica, sans-serif;
-      margin-bottom: 30px;
-    }
-
-    table {
-      border-collapse: collapse;
-      width: 80%;
-      margin: 20px auto;
-    }
-
-    td, th {
-      border: 1px solid rgb(199, 194, 194);
-      padding: 10px;
-      color: rgb(247, 241, 248);
-    }
-
-    td strong {
-      color: #d8a74c;
-    }
-
-    .carousel {
-      position: relative;
-      margin: 20px auto;
-      width: 220px;
-    }
-
-    .carousel img {
-      width: 200px;
-      height: auto;
-      border-radius: 10px;
-    }
-
-    .carousel-buttons {
-      margin-top: 10px;
-    }
-
-    .carousel-buttons button {
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      background-color: #d8a74c;
-      border: none;
-      margin: 5px;
-      cursor: pointer;
-    }
-
-    .carousel-buttons button.active {
-      background-color: #ee95c3;
-    }
-
-    .arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 34px;
-      background-color: transparent;
-      color: white;
-      border: none;
-      cursor: pointer;
-      
-    }
-
-    .arrow-left {
-  left: -30px; /* Afasta a seta da imagem para a esquerda */
-  position: center;
-}
-
-.arrow-right {
-  right: -30px; /* Afasta a seta da imagem para a direita */
-  position: center;
-}
-
-  </style>
+  
 </head>
 <body>
 
   <h1>Perfil do Aluno</h1>
 
-  <!-- Carrossel de Imagens -->
+  <!-- Carrossel -->
   <div class="carousel">
     <button class="arrow arrow-left" onclick="voltarImagem()">❮</button>
     <img id="carousel-image" src="foto1.webp" alt="Imagem do carrossel">
@@ -102,21 +22,30 @@
     </div>
   </div>
 
-  <!-- Tabela com informações -->
-  <table>
+  <!-- Tabela principal -->
+  <table id="tabela-principal">
     <tr><td><strong>Nome Completo:</strong></td><td>Suzana Patricia Morais Pereira</td></tr>
     <tr><td><strong>RA:</strong></td><td>124115854</td></tr>
     <tr><td><strong>Curso e Período Atual:</strong></td><td>Ciência da Computação - 3º Período</td></tr>
     <tr><td><strong>Endereço Completo:</strong></td><td>Rua Herculano Mourão Salazar 295 - Vista Alegre</td></tr>
     <tr><td><strong>E-mail:</strong></td><td>suzanamorais02@gmail.com</td></tr>
-    <tr><td><strong>UCs já cursadas:</strong></td><td>Programação de soluções computacionais, modelagem de software, sistemas computacionais e segurança, ambientes e conectividade.</td></tr>
+    <tr><td><strong>CPF:</strong></td>
+      <td id="cpf-container">
+        <input type="text" id="cpf" placeholder="000.000.000-00" onblur="validarCPF()" />
+      </td>
+    </tr>
+    <tr><td><strong>UCs já cursadas:</strong></td><td><button onclick="inserirUC()">Adicionar UC</button></td></tr>
+    <tbody id="lista-ucs"></tbody>
     <tr><td><strong>Perfil Pessoal:</strong></td><td>Gosto de músicas, kpop, doramas, anime e jiujitsu.</td></tr>
-    <tr><td><strong>Perfil Profissional/Acadêmico:</strong></td><td>Tenho interesse em modelagem de software.</td></tr>
-    <tr><td><strong>LinkedIn / Redes Sociais:</strong></td>
-      <td><a href="https://www.instagram.com/suzanam02?igsh=ZXYwOTZmcWRqaXBi" target="_blank">Instagram</a></td></tr>
+    <tr><td><strong>Mais sobre o Perfil Pessoal:</strong></td>
+      <td id="perfil-container">
+        <input type="text" id="nova-info" placeholder="Digite nova informação" />
+        <button onclick="adicionarInfo()">Adicionar</button>
+        <ul id="lista-perfil-container" style="margin: 10px 0; text-align: left; color: white; list-style: disc; padding-left: 20px;"></ul>
+      </td>
+    </tr>
   </table>
 
-  <!-- Script externo -->
   <script src="Script.js"></script>
 </body>
 </html>
